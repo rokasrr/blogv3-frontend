@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1><a href="" class="title">Rokas' blog</a></h1>
+      </div>
+      <!--Title-->
+      <div class="two col-md-6">
+        <a href="/login" class="login btn btn-default" *ngIf="!isAuthenticated()">Login</a>
+        <a href="/register" class="register btn btn-default" *ngIf="!isAuthenticated()">Register</a>
+        <button (click)="logout()" class="logout btn btn-default" *ngIf="isAuthenticated()">Log out</button>
+        <a href="/addPost" class="addPost btn btn-default" *ngIf="isAuthenticated()">Add post</a>
+      </div>
+      <!--Login/register-->
+    </div>
+  </div>
+</div>

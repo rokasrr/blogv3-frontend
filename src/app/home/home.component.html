@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="container">
+    <div class="row" *ngFor="let post of posts | async">
+      <div class="blogpost">
+        <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+        <div>
+          <i class="fas fa-user"></i> Author: <p>{{post.username}}</p>
+        </div>
+        <p [innerHTML]="post.content"></p>
+        <div>
+          <a type="button" href="/post/{{post.id}}" class="read-more btn btn-primary">Read More</a>
+          <button (click)="deletePost(post.id)"  class="read-more btn btn-danger" *ngIf="isAuthenticated()">Delete</button>
+
+          <a type="button" href="/update-post/{{post.id}}" class="read-more btn btn-outline-danger" *ngIf="isAuthenticated()">Edit</a>
+<!--          <button (click)="editPost(post)"  class="read-more btn btn-default" *ngIf="isAuthenticated()">Edit</button>-->
+
+        </div>
+        <hr>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="add-post-content">
+  <div class="container">
+    <div>
+      <h3 class="new-post-title">Edit post</h3>
+    </div>
+    <hr>
+    <form [formGroup]="addPostForm" (ngSubmit)="updateAnswer()">
+      <div class="form-group">
+        <label class="post-content">Body</label>
+        <editor [formControlName]="'body'" apiKey="y8hpdzcttpk4lu1qs5smwodd2dkbfcz57s9e31k1s8zaj8ba" [init]="{plugins: 'link'}"></editor>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form >
+  </div>
+</div>
+

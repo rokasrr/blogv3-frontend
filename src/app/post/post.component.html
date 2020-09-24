@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="container">
+    <a href="/" class="btn-outline-dark btn back">BACK</a>
+    <div class="row">
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-8">
+
+        <h1 class="blog-title">{{post.title}}</h1>
+        <span>
+                  <p>by {{post.username}}</p>
+              </span>
+        <hr>
+        <p [innerHTML]="post.content"></p>
+        <hr>
+        <h1 class="comments-title">Comments</h1>
+        <div class="" *ngFor="let comment of comments | async">
+          <div class="blogpost">
+            <h6><b>Comment ID : </b>{{comment.id}}</h6>
+            <div>
+              <i class="fas fa-user"></i> <b>Comment author:</b> {{comment.username}}
+            </div>
+            <p [innerHTML]="comment.content"></p>
+            <h6 *ngIf="isAnswered(comment)"><b>Answer:</b></h6>
+            <p *ngIf="isAnswered(comment)" [innerHTML]="comment.answer"></p>
+            <a type="button" href="/update-answer/{{comment.id}}/{{permaLink}}" class="read-more btn btn-danger" *ngIf="isAuthenticated()">Edit/Post answer</a>
+            <button (click)="deleteComment(post, comment.id)" class="read-more btn btn-danger" *ngIf="isAuthenticated()">Delete COMMENT</button>
+            <div>
+
+            </div>
+            <hr>
+          </div>
+          <hr>
+        </div>
+        <div>
+          <h5 class="new-post-title">Add comment</h5>
+        </div>
+        <hr>
+        <form [formGroup]="AddCommentForm" (ngSubmit)="addComment()">
+          <div class="form-group">
+            <editor [formControlName]="'body'" apiKey="y8hpdzcttpk4lu1qs5smwodd2dkbfcz57s9e31k1s8zaj8ba" [init]="{plugins: 'link'}"></editor>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-dark">Comment</button>
+          </div>
+        </form >
+        <hr>
+      </div>
+    </div>
+
+  </div>
+</div>
